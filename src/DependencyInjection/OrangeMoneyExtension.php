@@ -18,6 +18,10 @@ final class OrangeMoneyExtension extends Extension
         $configuration = new Configuration();
         $config = $processor->processConfiguration($configuration, $configs);
 
-        dd($config, $configs, $container);
+        $container->setParameter('mamadou.orange_money.client_id', $config['client_id']);
+        $container->setParameter('mamadou.orange_money.client_secret', $config['client_secret']);
+        $container->setParameter('mamadou.orange_money.base',
+            $config['environment'] == 'production' ? 'https://api.orange-sonatel.com' : 'https://api.sandbox.orange-sonatel.com');
+        //dd($container->getParameterBag()->all());
     }
 }

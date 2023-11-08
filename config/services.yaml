@@ -1,3 +1,6 @@
 services:
-  Tm\OrangeMoneyBundle\FirstClass:
-    arguments: ~
+  _defaults:
+    autowire: true
+    autoconfigure: true
+  Tm\OrangeMoneyBundle\:
+    resource: '../src/'
