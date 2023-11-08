@@ -7,7 +7,7 @@ Symfony
 ## Installation and configuration
 ### Pretty simple with [composer](https://packegist.org), run
 ```sh
-composer require tm/orange-money-bundle
+composer require mouctar/orange-money-bundle
 ```
 ###  Add OrangeMoneyBundle to your application kernel
 
