@@ -1,6 +1,6 @@
 {
     "version": "0.1",
-    "name": "tm/orange-money-bundle",
+    "name": "mouctar/orange-money-bundle",
     "description": "Orange Money for Symfony",
     "type": "symfony-bundle",
     "license": "MIT",
