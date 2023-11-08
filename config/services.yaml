@@ -1,0 +1,3 @@
+services:
+  Tm\OrangeMoneyBundle\FirstClass:
+    arguments: ~

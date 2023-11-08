@@ -1,0 +1,39 @@
+{
+    "version": "0.1",
+    "name": "tm/orange-money-bundle",
+    "description": "Orange Money for Symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tm\\OrangeMoneyBundle\\": "src/",
+            "Tm\\OrangeMoneyBundle\\Test\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mamadou Mouctar Diallo",
+            "email": "mamadou@mouctar.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "symfony/config": "^6.0",
+        "symfony/dependency-injection": "^6.0",
+        "symfony/event-dispatcher": "^6.0",
+        "symfony/http-foundation": "^6.0",
+        "symfony/http-kernel": "^6.0",
+        "symfony/routing": "^6.0",
+        "symfony/translation": "^6.0",
+        "symfony/framework-bundle": "^6.0",
+        "twig/twig": "^3.0",
+        "symfony/yaml": "^6.3"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.9",
+        "phpunit/phpunit": "^9.5"
+    }
+}

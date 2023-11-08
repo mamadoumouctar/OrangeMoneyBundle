@@ -1,0 +1,6 @@
+/config/secrets/*
+/var/
+/vendor/
+/phpunit.xml
+.phpunit.result.cache
+composer.lock
