@@ -5,6 +5,8 @@ namespace Tm\OrangeMoneyBundle\Http;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Tm\OrangeMoneyBundle\Entity\Merchant;
+use Tm\OrangeMoneyBundle\Entity\Transaction;
 
 class Token
 {
@@ -41,6 +43,40 @@ class Token
             }
         } catch (\Exception | \Throwable $e) {
             if($e instanceof HttpException) throw $e;
+        }
+    }
+
+    public function fetchOneStepPay(Transaction $transaction, Merchant $partner): void
+    {
+        try {
+            $response = $this->client->request('POST', $this->bag->get('mamadou.orange_money.base') . '/api/eWallet/v1/payments/onestep', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer '. $this->token
+                ],
+                'body' => json_encode([
+                    'customer' => [
+                        'idType' => $transaction->getClient()->getType()->value,
+                        'id' => $transaction->getClient()->getId(),
+                        'otp' => $transaction->getClient()->getOtp()
+                    ],
+                    'partner' => [
+                        'type' => $partner->getType()->value,
+                        'id' => $partner->getId()
+                    ],
+                    'amount' => [
+                        'value' => $transaction->getAmount(),
+                        'unit' => $transaction->getUnitAmount()->value
+                    ],
+                    //'metadata' => json_encode($transaction)
+                ])
+            ]);
+            if($response->getStatusCode() == 200){
+                dump($response->getContent());
+            }
+        }catch (\Exception | \Throwable $e){
+            if ($e instanceof HttpException) throw $e;
         }
     }
 
