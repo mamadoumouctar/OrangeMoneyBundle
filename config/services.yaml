@@ -5,6 +5,9 @@ services:
   Tm\OrangeMoneyBundle\:
     resource: '../src/'
     exclude:
-      - '../src/Entity/'
-  Tm\OrangeMoneyBundle\Http\OneStepPayService:
+      - '../src/{DependencyInjection,Entity}'
+  Tm\OrangeMoneyBundle\Http\Api\:
+    resource: '../src/Http/Api/'
+    arguments:
+      $base: '%mamadou.orange_money.base%'
     public: true
