@@ -12,7 +12,6 @@ use Tm\OrangeMoneyBundle\Entity\Response\OMPublicKey;
 
 class PublicKeyService extends Service
 {
-
     public function __invoke(): OMPublicKey
     {
         try {

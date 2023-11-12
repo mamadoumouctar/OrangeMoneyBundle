@@ -46,40 +46,6 @@ class Token
         }
     }
 
-    public function fetchOneStepPay(Transaction $transaction, Merchant $partner): void
-    {
-        try {
-            $response = $this->client->request('POST', $this->bag->get('mamadou.orange_money.base') . '/api/eWallet/v1/payments/onestep', [
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer '. $this->token
-                ],
-                'body' => json_encode([
-                    'customer' => [
-                        'idType' => $transaction->getClient()->getType()->value,
-                        'id' => $transaction->getClient()->getId(),
-                        'otp' => $transaction->getClient()->getOtp()
-                    ],
-                    'partner' => [
-                        'type' => $partner->getType()->value,
-                        'id' => $partner->getId()
-                    ],
-                    'amount' => [
-                        'value' => $transaction->getAmount(),
-                        'unit' => $transaction->getUnitAmount()->value
-                    ],
-                    //'metadata' => json_encode($transaction)
-                ])
-            ]);
-            if($response->getStatusCode() == 200){
-                dump($response->getContent());
-            }
-        }catch (\Exception | \Throwable $e){
-            if ($e instanceof HttpException) throw $e;
-        }
-    }
-
     public function getToken(): string
     {
         return $this->token;

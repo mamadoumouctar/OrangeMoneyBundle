@@ -33,7 +33,6 @@ class OMPublicKeyTest extends KernelTestCase
         $service = $this->getContainer()->get(PublicKeyService::class);
         /** @var OMPublicKey $response */
         $response = $service();
-        dump($response);
         $this->assertNotEmpty($response->getKey());
     }
 

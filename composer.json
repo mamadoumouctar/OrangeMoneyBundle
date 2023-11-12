@@ -26,7 +26,8 @@
         "twig/twig": "^3.0",
         "symfony/yaml": "^6.3",
         "symfony/http-kernel": "^6.3",
-        "symfony/http-client": "^6.3"
+        "symfony/http-client": "^6.3",
+        "symfony/console": "^6.3"
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
