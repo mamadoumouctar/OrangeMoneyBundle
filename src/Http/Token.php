@@ -55,4 +55,9 @@ class Token
     {
         return $this->refreshToken;
     }
+
+    public function getEnvironement(): string
+    {
+        return $this->bag->get('mamadou.orange_money.environment');
+    }
 }

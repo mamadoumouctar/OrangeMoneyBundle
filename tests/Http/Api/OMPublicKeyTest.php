@@ -23,7 +23,7 @@ class OMPublicKeyTest extends KernelTestCase
         /** @var TestKernel $kernel */
         $kernel = parent::createKernel($options);
         $kernel->addTestBundle(OrangeMoneyBundle::class);
-        $kernel->addTestConfig(dirname(__DIR__). '/config.yaml');
+        $kernel->addTestConfig(dirname(__DIR__, 2) . '/config.yaml');
         $kernel->handleOptions($options);
         return $kernel;
     }

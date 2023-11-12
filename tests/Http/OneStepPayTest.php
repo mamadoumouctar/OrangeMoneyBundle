@@ -23,7 +23,7 @@ class OneStepPayTest extends KernelTestCase
         /** @var TestKernel $kernel */
         $kernel = parent::createKernel($options);
         $kernel->addTestBundle(OrangeMoneyBundle::class);
-        $kernel->addTestConfig(__DIR__. '/config.yaml');
+        $kernel->addTestConfig(dirname(__DIR__, 1).'/config.yaml');
         $kernel->handleOptions($options);
         return $kernel;
     }

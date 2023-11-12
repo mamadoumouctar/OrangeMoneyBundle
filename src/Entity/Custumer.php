@@ -4,6 +4,9 @@ namespace Tm\OrangeMoneyBundle\Entity;
 
 class Custumer
 {
+
+    public string $encryptedPinCode = '';
+
     public function __construct(
         private string $id = '',
         private string $otp = '',
@@ -40,6 +43,17 @@ class Custumer
     public function setType(IdEnumType $type): Custumer
     {
         $this->type = $type;
+        return $this;
+    }
+
+    public function getEncryptedPinCode(): string
+    {
+        return $this->encryptedPinCode;
+    }
+
+    public function setEncryptedPinCode(string $encryptedPinCode): Custumer
+    {
+        $this->encryptedPinCode = $encryptedPinCode;
         return $this;
     }
 }
