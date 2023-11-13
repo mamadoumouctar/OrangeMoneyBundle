@@ -5,7 +5,7 @@ of the Orange Money payment API on an app
 Symfony
 
 ## Installation and configuration
-### Pretty simple with [composer](https://packegist.org), run
+### Pretty simple with [composer](https://packagist.org/), run
 ```sh
 composer require mouctar/orange-money-bundle
 ```
@@ -38,5 +38,22 @@ orange_money:
   environment: sandbox
 ````
 
-### How it use
+### How it uses
+### Fetching Orange Money Public key
 
+```php
+<?php
+// src/Controller/LuckyController.php
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+class PublicKeyController extends AbstractController
+{
+    public function fetch(PublicKeyService $service): JsonResponse
+    {
+        return new JsonResponse($service());
+    }
+}
+```

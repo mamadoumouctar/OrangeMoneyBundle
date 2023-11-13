@@ -2,7 +2,7 @@
 
 namespace Tm\OrangeMoneyBundle\Entity\Response;
 
-readonly class OMPublicKey
+readonly class OMPublicKey implements \JsonSerializable
 {
     public function __construct(
         private string $keyId,
@@ -29,5 +29,15 @@ readonly class OMPublicKey
     public function getKey(): string
     {
         return $this->key;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'keyId' => $this->keyId,
+            'keyType' => $this->keyType,
+            'keySize' => $this->keySize,
+            'key' => $this->key
+        ];
     }
 }
